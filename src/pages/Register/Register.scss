@@ -1,0 +1,65 @@
+@import "../../global.scss";
+
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+  .content {
+    width: 50vw;
+    background-color: #a9c5ba;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content img {
+      width: 75%;
+      height: 70%;
+    }
+  }
+
+  .login-form {
+    width: 50vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & span {
+      @include title;
+      margin-bottom: 40px;
+    }
+    
+     .forgot {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 14px;
+      color: $cinza;
+      text-decoration: none;
+    }
+
+    & label {
+      @include text;
+    }
+    
+    & input {
+      display: flex;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      width: 350px;
+      margin-bottom: 10px;
+      height: 30px;
+      background-color: transparent;
+      outline: none;
+    }
+    
+    & button {
+      @include botao;
+    }
+  }
+}

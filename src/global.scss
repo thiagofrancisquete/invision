@@ -1,0 +1,34 @@
+$cinza: #707070;
+$bg-right: #00000029;
+$bg-left: #A9C5BA;
+$branco: #fff;
+$preto: #000;
+
+@mixin title {
+  color: $cinza;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+@mixin text {
+  color: $cinza;
+  text-align: left;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@mixin botao {
+  background-color: $cinza;
+  color: $branco;
+  font-size: 16px;
+  width: 175px;
+  height: 45px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  outline: none;
+}
