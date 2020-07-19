@@ -8,8 +8,7 @@ import "./Login.scss";
 import Google from "../../components/Google/Google";
 import SignBtn from "../../components/Sign/SignBtn";
 import Title from "../../components/Title/Title";
-import bg from "../../assets/component.png";
-
+import Slide from "../../components/Carousel/Slide";
 
 const validations = yup.object().shape({
   name: yup.string().min(3).required("This field can not be empty"),
@@ -23,10 +22,11 @@ function Login() {
 
   return (
     <div className="login-container">
-      <div className="content">
-        <img src={bg} alt="laranjinha e acerola" />
+      <div className="bg-left">
+        <Slide />
       </div>
       <div className="login-form">
+      <h1>Invision</h1>
         <Title titulo="Welcome to Invision" />
         <Formik
           initialValues={{ name: "", password: "" }}
@@ -51,7 +51,11 @@ function Login() {
             <SignBtn text="Sign in" />
           </Form>
         </Formik>
-        <span id="or">Or</span>
+        <div className="line-container">
+          <div className="line" />
+          <span id="or">Or</span>
+          <div className="line" />
+        </div>
         <Google title="Sign in" />
         <div className="rodape">
           <p>
