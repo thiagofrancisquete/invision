@@ -1,0 +1,15 @@
+@import "../../global.scss";
+
+.content {
+  width: 50vw;
+  background-color: #a9c5ba;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content img {
+    width: 75%;
+    height: 70%;
+  }
+}

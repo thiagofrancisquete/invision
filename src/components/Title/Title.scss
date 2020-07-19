@@ -1,0 +1,13 @@
+@import '../../global.scss';
+
+.titulo {
+  font-family: sans-serif;
+  height: 200px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @include title;
+}

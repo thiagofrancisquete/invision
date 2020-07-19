@@ -42,6 +42,14 @@
     justify-content: center;
     align-items: center;
 
+    & .rodape {
+      color: $cinza;
+
+      & a {
+        color: $bg-left;
+      }
+    }
+
     & #or {
       width: 50%;
       height: 50px;
@@ -50,22 +58,6 @@
       font-size: 18px;
       position: relative;
       color: #57585c;
-    }
-
-    & #google {
-      background-color: #fff;
-      color: $cinza;
-      padding: 20px;
-      border: 1px solid $cinza;
-      width: 240px;
-      & img {
-        margin: 10px;
-      }
-    }
-
-    & span {
-      @include title;
-      margin-bottom: 40px;
     }
 
     & .Form-Error {
@@ -94,10 +86,6 @@
       height: 30px;
       background-color: orange;
       outline: none;
-    }
-
-    & button {
-      @include botao;
     }
   }
 }

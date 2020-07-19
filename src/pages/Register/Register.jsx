@@ -1,27 +1,29 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import * as yup from "yup";
+
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
+
+import { ErrorMessage, Formik, Form, Field } from "formik";
 
 import "./Register.scss";
 
 import bg from "../../assets/component.png";
+import Google from "../../components/Google/Google";
+import SignBtn from "../../components/Sign/SignBtn";
+import Title from "../../components/Title/Title";
 
 function Register() {
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  
+  const validations = yup.object().shape({
+    fullname: yup.string().min(3).required("This field can not be empty"),
+    username: yup.string().min(3).required("This field can not be empty"),
+    password: yup.string().min(8).required("This field can not be empty"),
+  });
+  
 
   const history = useHistory();
 
-  async function handleCreateLogin(e) {
-    e.preventDefault();
-
-    const data = {
-      name,
-      username,
-      password,
-    };
-
-    console.log(data)
+  async function handleCreateLogin() {
     history.push("/");
   }
 
@@ -31,33 +33,82 @@ function Register() {
         <img src={bg} alt="laranjinha e acerola" />
       </div>
       <div className="login-form">
-        <span>Getting started</span>
-        <form onSubmit={handleCreateLogin}>
-          <label>Full name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label>Users name or email</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <label>Create password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Sign up</button>
-        </form>
+        <Title titulo="Getting started" />
+       
+        <Formik
+          initialValues={{ fullname: "", username: "", password: "" }}
+          onSubmit={handleCreateLogin}
+          validationSchema={validations}
+        >
+          <Form className="Form">
+            <label>Full name *</label>
+            <Field className="Form-Field" type="text" name="fullname" id="fullname" />
+            <ErrorMessage className="Form-Error" component="span" name="fullname" />
+            <br />
+            <label>User name or Email *</label>
+            <Field className="Form-Field" type="text" name="username" id="username" />
+            <ErrorMessage className="Form-Error" component="span" name="username" />
+            <br />
+            <label>Password *</label>
+            <Field type="password" id="password" name="password" />
+            <ErrorMessage
+              className="Form-Error"
+              component="span"
+              name="password"
+            />
+            <Link className="forgot" to="/">
+              Forgot password?
+            </Link>
+            <SignBtn text="Sign up" />
+          </Form>
+        </Formik>
+        <Google title="Sign up" />
+        <div className="rodape">
+          <p>
+            By signing up, you agree to <b>Invision</b> <br />{" "}
+            <Link to="/">Terms of Conditions</Link> and <Link to="/">Privacy Policy</Link>
+          </p>
+          <p>Already on <b>Invision</b>? <Link to="/">Log in</Link></p>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Register;
+
+/**
+ * 
+ * 
+
+        <Formik
+          initialValues={{ fullname: "", username: "", password: "" }}
+          onSubmit={handleSubmit}
+          validationSchema={validations}
+        >
+          <Form className="Form">
+            <label>Full name *</label>
+            <Field className="Form-Field" type="text" name="fullname" id="fullname" />
+            <ErrorMessage className="Form-Error" component="span" name="fullname" />
+            <br />
+            <label>User name or Email *</label>
+            <Field className="Form-Field" type="text" name="username" id="username" />
+            <ErrorMessage className="Form-Error" component="span" name="username" />
+            <br />
+            <label>Password *</label>
+            <Field type="password" id="password" name="password" />
+            <ErrorMessage
+              className="Form-Error"
+              component="span"
+              name="password"
+            />
+            <Link className="forgot" to="/">
+              Forgot password?
+            </Link>
+            <SignBtn text="Sign in" />
+          </Form>
+        </Formik>
+
+
+
+ */
